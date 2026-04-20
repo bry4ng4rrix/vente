@@ -6,6 +6,10 @@ export interface User {
   password: string;
   name: string;
   role: UserRole;
+  phone?: string;
+  address?: string;
+  bio?: string;
+  avatar?: string;
   storeName?: string;
   storeDescription?: string;
   storeImage?: string;

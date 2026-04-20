@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Link from 'next/link';
-import { ShoppingCart, Star, Trash2 } from 'lucide-react';
+import { ShoppingCart, Star, Trash2, User } from 'lucide-react';
 
 export default function ClientHomePage() {
   const { user } = useAuth();
@@ -99,9 +99,17 @@ export default function ClientHomePage() {
 
   return (
     <div className="space-y-8">
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">Bienvenue, {user.name} !</h1>
-        <p className="text-muted-foreground">Explorez nos produits et faites vos achats</p>
+      <div className="flex justify-between items-center">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold">Bienvenue, {user.name} !</h1>
+          <p className="text-muted-foreground">Explorez nos produits et faites vos achats</p>
+        </div>
+        <Button asChild variant="outline" className="gap-2">
+          <Link href="/client/profile">
+            <User className="w-4 h-4" />
+            Mon Profil
+          </Link>
+        </Button>
       </div>
 
       {/* Filters */}
