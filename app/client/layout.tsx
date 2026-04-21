@@ -4,7 +4,7 @@ import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ShoppingCart, Home, Package } from 'lucide-react';
+import { ShoppingCart, Home, Package, User } from 'lucide-react';
 
 export default function ClientLayout({
   children,
@@ -55,7 +55,10 @@ export default function ClientLayout({
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">{user.name}</span>
+            <Link href="/client/profile" className='flex items-center justify-center gap-2'>
+              <User className="w-4 h-4" />
+              {user.name}
+            </Link>
             <Button variant="outline" size="sm" onClick={handleLogout}>
               Déconnexion
             </Button>
