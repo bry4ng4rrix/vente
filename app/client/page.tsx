@@ -99,16 +99,10 @@ export default function ClientHomePage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold">Bienvenue, {user.name} !</h1>
-          <p className="text-muted-foreground">Explorez nos produits et faites vos achats</p>
-        </div>
 
-      </div>
 
       {/* Filters */}
-      <div className="space-y-4 bg-white p-6 rounded-lg border">
+      {/* <div className="space-y-4 bg-white p-6 rounded-lg border">
         <h2 className="font-semibold">Filtrer</h2>
 
         <div className="space-y-2">
@@ -149,7 +143,7 @@ export default function ClientHomePage() {
             </select>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Cart Dialog */}
       <Dialog open={showCart} onOpenChange={setShowCart}>
@@ -313,7 +307,7 @@ export default function ClientHomePage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {filteredProducts.map((product) => {
             const vendor = getUserById(product.vendorId);
             const discount = product.promotion ?
@@ -322,7 +316,7 @@ export default function ClientHomePage() {
               (product.price - parseFloat(discount)).toFixed(2) : null;
 
             return (
-              <Card key={product.id} className="flex flex-col hover:shadow-lg transition-shadow">
+              <Card key={product.id} className="flex flex-col hover:shadow-md transition-shadow">
                 <CardHeader>
                   <div className="flex justify-between items-start gap-2">
                     <div className="flex-1 min-w-0">

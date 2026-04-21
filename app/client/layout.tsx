@@ -59,7 +59,7 @@ export default function ClientLayout({
               <User className="w-4 h-4" />
               {user.name}
             </Link>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="sm" className='bg-primary' onClick={handleLogout}>
               Déconnexion
             </Button>
           </div>
