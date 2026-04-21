@@ -19,7 +19,7 @@ export default function ClientHomePage() {
   const [cart, setCart] = useState(getCart());
 
   const products = useMemo(() => getAllProducts(), []);
-  
+
   const categories = useMemo(() => {
     return Array.from(new Set(products.map(p => p.category))).sort();
   }, [products]);
@@ -32,7 +32,7 @@ export default function ClientHomePage() {
   const filteredProducts = useMemo(() => {
     return products.filter(p => {
       const matchesSearch = p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           p.brand.toLowerCase().includes(searchTerm.toLowerCase());
+        p.brand.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = !selectedCategory || p.category === selectedCategory;
       const matchesVendor = !selectedVendor || p.vendorId === selectedVendor;
       return matchesSearch && matchesCategory && matchesVendor;
@@ -115,7 +115,7 @@ export default function ClientHomePage() {
       {/* Filters */}
       <div className="space-y-4 bg-white p-6 rounded-lg border">
         <h2 className="font-semibold">Filtrer</h2>
-        
+
         <div className="space-y-2">
           <label className="text-sm font-medium">Recherche</label>
           <Input
@@ -301,42 +301,6 @@ export default function ClientHomePage() {
         )}
       </Button>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Produits disponibles
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{products.length}</div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Résultats
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{filteredProducts.length}</div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Vendeurs
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{vendors.length}</div>
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Products Grid */}
       {filteredProducts.length === 0 ? (
         <Card>
@@ -357,9 +321,9 @@ export default function ClientHomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => {
             const vendor = getUserById(product.vendorId);
-            const discount = product.promotion ? 
+            const discount = product.promotion ?
               (product.price * (product.promotion.discountPercent / 100)).toFixed(2) : null;
-            const discountedPrice = discount ? 
+            const discountedPrice = discount ?
               (product.price - parseFloat(discount)).toFixed(2) : null;
 
             return (
